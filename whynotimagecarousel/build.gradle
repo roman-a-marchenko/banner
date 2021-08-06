@@ -21,7 +21,7 @@ publishing {
     publications {
         gpr(MavenPublication) {
             groupId 'kg.ram.slider'
-            artifactId 'banner-slider'
+            artifactId 'banner'
             version '1.0.0'
         }
     }
@@ -32,7 +32,7 @@ publishing {
 
             // Replace GITHUB_USERID with your personal or organisation user ID and
             // REPOSITORY with the name of the repository on GitHub
-            url = uri("https://github.com/roman-a-marchenko/Why-Not-Image-Carousel")
+            url = uri("https://github.com/roman-a-marchenko/banner")
 
             credentials {
                 username = "roman-a-marchenko"
