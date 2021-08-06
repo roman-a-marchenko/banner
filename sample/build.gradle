@@ -55,9 +55,6 @@ dependencies {
     // You will use the library like this:
     // implementation "org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:x.x.x"
 
-    // Material Components
-    implementation 'com.google.android.material:material:1.4.0'
-
     // Circle Indicator
     implementation 'me.relex:circleindicator:2.1.6'
     
