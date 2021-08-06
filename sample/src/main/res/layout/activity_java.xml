@@ -3,13 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JavaActivity">
+    tools:context="kg.ram.banners.sample.JavaActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container_view"
-        android:name="org.imaginativeworld.whynotimagecarousel.sample.SampleFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout="@layout/fragment_sample" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

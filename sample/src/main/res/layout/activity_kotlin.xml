@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:background="#555555"
     android:scrollbars="none"
-    tools:context=".KotlinActivity">
+    tools:context="kg.ram.banners.sample.KotlinActivity">
 
-    <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+    <kg.ram.banners.ImageCarousel
         android:id="@+id/carousel1"
         android:layout_width="match_parent"
         android:layout_height="113dp"
