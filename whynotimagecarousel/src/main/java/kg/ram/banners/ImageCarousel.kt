@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.ColorRes
 import androidx.annotation.Dimension
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -349,9 +350,18 @@ class ImageCarousel(
 
     var touchToPause: Boolean = false
 
+    @ColorRes
+    var activeIndicatorColor: Int = R.color.white
+
+    @ColorRes
+    var inactiveIndicatorColor: Int = R.color.white
+
+    var slowingScrollSpeed: Int = 1
+
     init {
         initViews()
         initAttributes()
+        initLayoutManager()
         initAdapter()
         initListeners()
         initAutoPlay()
@@ -399,14 +409,6 @@ class ImageCarousel(
         recyclerView = carouselView.findViewById(R.id.recyclerView)
         viewTopShadow = carouselView.findViewById(R.id.view_top_shadow)
         viewBottomShadow = carouselView.findViewById(R.id.view_bottom_shadow)
-
-        recyclerView.layoutManager =
-            CarouselLinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                .apply {
-                    scaleOnScroll = this@ImageCarousel.scaleOnScroll
-                    scalingFactor = this@ImageCarousel.scalingFactor
-                }
-        recyclerView.setHasFixedSize(true)
     }
 
     private fun initAttributes() {
@@ -418,6 +420,15 @@ class ImageCarousel(
         ).apply {
 
             try {
+
+                slowingScrollSpeed =
+                    getInt(R.styleable.ImageCarousel_slowingScrollSpeed, 1)
+
+                activeIndicatorColor =
+                    getResourceId(R.styleable.ImageCarousel_indicatorActiveColor, R.color.white)
+
+                inactiveIndicatorColor =
+                    getResourceId(R.styleable.ImageCarousel_indicatorInactiveColor, R.color.white)
 
                 cardCornerRadius =
                     getDimension(R.styleable.ImageCarousel_carouselCardCornerRadius, 4f).toInt()
@@ -556,6 +567,21 @@ class ImageCarousel(
         }
     }
 
+    private fun initLayoutManager() {
+        recyclerView.layoutManager =
+            CarouselLinearLayoutManager(
+                context,
+                LinearLayoutManager.HORIZONTAL,
+                false,
+                slowingScrollSpeed
+            )
+                .apply {
+                    scaleOnScroll = this@ImageCarousel.scaleOnScroll
+                    scalingFactor = this@ImageCarousel.scalingFactor
+                }
+        recyclerView.setHasFixedSize(true)
+    }
+
     private fun initAdapter() {
         if (infiniteCarousel) {
             adapter = InfiniteCarouselAdapter(
@@ -674,6 +700,11 @@ class ImageCarousel(
         }
 
         indicator?.apply {
+            tintIndicator(
+                ContextCompat.getColor(context, activeIndicatorColor),
+                ContextCompat.getColor(context, inactiveIndicatorColor)
+            )
+
             if (isBuiltInIndicator) {
                 // Indicator margin re-initialize
                 val indicatorMarginParams = this.layoutParams as LayoutParams

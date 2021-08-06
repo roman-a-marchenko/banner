@@ -1,15 +1,20 @@
 package kg.ram.banners.utils
 
 import android.content.Context
+import android.graphics.PointF
+import android.util.DisplayMetrics
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 import kotlin.math.min
 
+
 class CarouselLinearLayoutManager(
     context: Context,
     orientation: Int,
-    reverseLayout: Boolean
+    reverseLayout: Boolean,
+    val slowingScrollSpeed: Int
 ) : LinearLayoutManager(context, orientation, reverseLayout) {
 
     var isOffsetStart = false
@@ -19,6 +24,29 @@ class CarouselLinearLayoutManager(
     override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
         super.onLayoutChildren(recycler, state)
         scrollHorizontallyBy(0, recycler, state)
+    }
+
+    override fun smoothScrollToPosition(
+        recyclerView: RecyclerView?,
+        state: RecyclerView.State?,
+        position: Int
+    ) {
+        val linearSmoothScroller: LinearSmoothScroller = object : LinearSmoothScroller(
+            recyclerView!!.context
+        ) {
+            override fun computeScrollVectorForPosition(targetPosition: Int): PointF? {
+                return this@CarouselLinearLayoutManager.computeScrollVectorForPosition(
+                    targetPosition
+                )
+            }
+
+            override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics): Float {
+                return super.calculateSpeedPerPixel(displayMetrics) * slowingScrollSpeed
+            }
+        }
+
+        linearSmoothScroller.targetPosition = position
+        startSmoothScroll(linearSmoothScroller)
     }
 
     override fun scrollHorizontallyBy(

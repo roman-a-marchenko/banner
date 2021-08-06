@@ -32,6 +32,9 @@
         <attr name="carouselPaddingEnd" format="dimension" />
         <attr name="carouselPaddingBottom" format="dimension" />
         <attr name="carouselCardCornerRadius" format="dimension"/>
+        <attr name="indicatorActiveColor" format="reference"/>
+        <attr name="indicatorInactiveColor" format="reference"/>
+        <attr name="slowingScrollSpeed" format="integer"/>
 
         <attr name="showNavigationButtons" format="boolean" />
         <attr name="previousButtonLayout" format="reference" />
