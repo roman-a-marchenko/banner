@@ -13,35 +13,18 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'maven-publish'
 
-def githubProperties = new Properties()
-githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
-
-
-publishing {
-    publications {
-        gpr(MavenPublication) {
-            groupId 'kg.ram.slider'
-            artifactId 'banner'
-            version '1.0.1'
-        }
-    }
-
-    repositories {
-        maven {
-            name = "GitHubPackages"
-
-            // Replace GITHUB_USERID with your personal or organisation user ID and
-            // REPOSITORY with the name of the repository on GitHub
-            url = uri("https://github.com/roman-a-marchenko/banner")
-
-            credentials {
-                username = "roman-a-marchenko"
-                password = "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"
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId 'kg.ram'
+                artifactId 'banner-slider'
+                version '1.0.3'
             }
         }
     }
 }
-
 
 android {
     compileSdkVersion 30
