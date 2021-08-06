@@ -425,10 +425,16 @@ class ImageCarousel(
                     getInt(R.styleable.ImageCarousel_slowingScrollSpeed, 1)
 
                 activeIndicatorColor =
-                    getResourceId(R.styleable.ImageCarousel_indicatorActiveColor, R.color.white)
+                    getResourceId(R.styleable.ImageCarousel_indicatorColor, R.color.white)
+                inactiveIndicatorColor =  activeIndicatorColor
 
-                inactiveIndicatorColor =
-                    getResourceId(R.styleable.ImageCarousel_indicatorInactiveColor, R.color.white)
+                if(hasValue(R.styleable.ImageCarousel_indicatorInactiveColor)) {
+                    inactiveIndicatorColor =
+                        getResourceId(
+                            R.styleable.ImageCarousel_indicatorInactiveColor,
+                            R.color.white
+                        )
+                }
 
                 cardCornerRadius =
                     getDimension(R.styleable.ImageCarousel_carouselCardCornerRadius, 4f).toInt()

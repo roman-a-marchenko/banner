@@ -16,8 +16,7 @@
         app:autoPlay="true"
         app:autoPlayDelay="4000"
         app:slowingScrollSpeed="7"
-        app:indicatorActiveColor="@color/black"
-        app:indicatorInactiveColor="@color/colorAccent"
+        app:indicatorColor="@color/black"
         app:showBottomShadow="false"
         app:carouselCardCornerRadius="0dp"
         app:showTopShadow="false" />
