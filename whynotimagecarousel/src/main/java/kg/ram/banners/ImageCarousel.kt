@@ -504,9 +504,7 @@ class ImageCarousel(
                     R.styleable.ImageCarousel_carouselBackground
                 ) ?: ColorDrawable(Color.parseColor("#00000000"))
 
-                imagePlaceholder = getDrawable(
-                    R.styleable.ImageCarousel_imagePlaceholder
-                ) ?: ContextCompat.getDrawable(context, R.drawable.carousel_default_placeholder)
+                imagePlaceholder = getDrawable(R.styleable.ImageCarousel_imagePlaceholder)
 
                 carouselPadding = getDimension(
                     R.styleable.ImageCarousel_carouselPadding,

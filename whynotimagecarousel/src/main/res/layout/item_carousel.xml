@@ -8,6 +8,12 @@
     app:cardBackgroundColor="@android:color/transparent"
     app:cardElevation="0dp">
 
+    <ProgressBar
+        android:indeterminateTint="#757575"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <ImageView
         android:id="@+id/img"
         android:layout_width="match_parent"
