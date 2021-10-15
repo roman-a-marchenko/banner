@@ -1015,4 +1015,11 @@ class ImageCarousel(
     fun stop() {
         autoPlay = false
     }
+
+
+    override fun setEnabled(enabled: Boolean) {
+        recyclerView.isFocusable = enabled
+        recyclerView.isClickable = enabled
+        super.setEnabled(enabled)
+    }
 }
