@@ -11,11 +11,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.annotation.ColorRes
 import androidx.annotation.Dimension
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -1018,8 +1020,7 @@ class ImageCarousel(
 
 
     override fun setEnabled(enabled: Boolean) {
-        recyclerView.isFocusable = enabled
-        recyclerView.isClickable = enabled
+        (carouselView.findViewById<FrameLayout>(R.id.plate)).isVisible = !enabled
         super.setEnabled(enabled)
     }
 }
