@@ -427,13 +427,13 @@ class ImageCarousel(
                     getInt(R.styleable.ImageCarousel_slowingScrollSpeed, 1)
 
                 activeIndicatorColor =
-                    getResourceId(R.styleable.ImageCarousel_indicatorColor, R.color.white)
+                    getResourceId(R.styleable.ImageCarousel_carouselIndicatorColor, R.color.white)
                 inactiveIndicatorColor =  activeIndicatorColor
 
-                if(hasValue(R.styleable.ImageCarousel_indicatorInactiveColor)) {
+                if(hasValue(R.styleable.ImageCarousel_carouselIndicatorColor)) {
                     inactiveIndicatorColor =
                         getResourceId(
-                            R.styleable.ImageCarousel_indicatorInactiveColor,
+                            R.styleable.ImageCarousel_carouselIndicatorColor,
                             R.color.white
                         )
                 }

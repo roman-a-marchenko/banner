@@ -20,7 +20,7 @@ afterEvaluate {
                 from components.release
                 groupId 'kg.ram'
                 artifactId 'banner-slider'
-                version '1.0.8'
+                version '1.0.9'
             }
         }
     }
